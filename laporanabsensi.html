@@ -776,7 +776,7 @@ color: #ffa500; /* ganti dari biru ke orange */
     const body = document.body;
 
   // URL endpoint proxy ke GAS
-  const DATA_URL = "https://distinct-flint-fig.glitch.me/api/rekapabsensi";
+  const DATA_URL = "https://server-minangchicken-production.up.railway.app/api/rekapabsensi";
 
   async function fetchData() {
   try {
@@ -797,7 +797,7 @@ color: #ffa500; /* ganti dari biru ke orange */
 
   async function populateNamaFilter() {
     try {
-      const res = await fetch('https://distinct-flint-fig.glitch.me/api/data-user?action=getNamaUser');
+      const res = await fetch('https://server-minangchicken-production.up.railway.app/api/data-user?action=getNamaUser');
       const result = await res.json();
       if (!result.success) throw new Error(result.message || "Gagal memuat data");
 
@@ -867,7 +867,7 @@ color: #ffa500; /* ganti dari biru ke orange */
   }
   // Klik pada logo header untuk kembali ke halaman menu
 headerImg.addEventListener("click", () => {
-  window.location.href = "menu.html";
+  window.location.href = "/minangchicken/menu.html";
 });
   
    // Toggle tema gelap/terang
