@@ -734,20 +734,20 @@ color: #ffa500; /* ganti dari biru ke orange */
     // === NAVIGASI PAGE ===
     function navigate(page) {
       const routes = {
-        'dashboard': '/dashboard.html',
-        'laporan-keuangan': '/laporan-keuangan.html',
-        'laporan-stok-barang': '/laporan-stok-barang.html',
-        'laporan-absensi': '/laporanabsensi.html',
-        'laporan-stok-harian': '/laporanstokharian.html',     // Sudah Selesai
-        'laporan-cashflow': '/laporan-cashflow.html',         
-        'form-absensi': '/formabsensi.html',                  // Sudah selesai
-        'form-input': '/forminput.html',                      // Sudah selesai
-        'form-output': '/formoutput.html',                    // Sudah selesai
-        'form-output-umum': '/formoutputumum.html',           // Sudah selesai
-        'form-keuangan': '/formkeuangan.html',                // Sudah selesai
-        'form-biaya-oprasional': '/formbiayaoprasional.html', // Sudah selesai
-        'form-potongan-gaji': '/formpotongangaji.html',       // Sudah selesai
-        'logout': '/index.html'                               // Sudah selesai
+        'dashboard': '/minangchicken/dashboard.html',
+        'laporan-keuangan': '/minangchicken/laporan-keuangan.html',
+        'laporan-stok-barang': '/minangchicken/laporan-stok-barang.html',
+        'laporan-absensi': '/minangchicken/laporanabsensi.html',
+        'laporan-stok-harian': '/minangchicken/laporanstokharian.html',     // Sudah Selesai
+        'laporan-cashflow': '/minangchicken/laporan-cashflow.html',         
+        'form-absensi': '/minangchicken/formabsensi.html',                  // Sudah selesai
+        'form-input': '/minangchicken/forminput.html',                      // Sudah selesai
+        'form-output': '/minangchicken/formoutput.html',                    // Sudah selesai
+        'form-output-umum': '/minangchicken/formoutputumum.html',           // Sudah selesai
+        'form-keuangan': '/minangchicken/formkeuangan.html',                // Sudah selesai
+        'form-biaya-oprasional': '/minangchicken/formbiayaoprasional.html', // Sudah selesai
+        'form-potongan-gaji': '/minangchicken/formpotongangaji.html',       // Sudah selesai
+        'logout': '/minangchicken/index.html'                               // Sudah selesai
       };
 
       if (page === 'logout') {
@@ -808,11 +808,11 @@ color: #ffa500; /* ganti dari biru ke orange */
         const level = user.level?.toLowerCase();
         if (!allowedRoles.includes(level)) {
           alert("Akses ditolak");
-          window.location.href = "/menu.html";
+          window.location.href = "/minangchicken/menu.html";
         }
       } catch (e) {
         alert("Anda belum login.");
-        window.location.href = "/index.html";
+        window.location.href = "/minangchicken/index.html";
       }
     }
 
@@ -822,7 +822,7 @@ color: #ffa500; /* ganti dari biru ke orange */
     const userStr = localStorage.getItem("user");
 
     if (!userStr && !isLoginPage) {
-      window.location.href = '/index.html';
+      window.location.href = '/minangchicken/index.html';
     } else {
       limitMenuByRole();
     }
