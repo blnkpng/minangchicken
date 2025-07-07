@@ -1386,7 +1386,7 @@ async function kirimAbsensiKeGAS(data, file) {
     fotoBase64: base64Foto
   };
 
-  const res = await fetch("server-minangchicken-production.up.railway.app/api/absensi", {
+  const res = await fetch("https://server-minangchicken-production.up.railway.app/api/absensi", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload)
