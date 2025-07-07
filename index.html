@@ -669,7 +669,7 @@ transition: opacity 0.3s ease;
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
   const toggle = document.getElementById('mode-toggle');
   const body = document.body;
   const headerImg = document.getElementById('header-img');
@@ -687,7 +687,6 @@ transition: opacity 0.3s ease;
   const lightImg = "https://i.imgur.com/ICtnWt9.png";
   const darkImg = "https://fontmeme.com/permalink/250529/c5fbc9fd5fe46637522e00b6e65508da.png";
 
-  // Inisialisasi tema berdasarkan preferensi
   function initMode() {
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -721,7 +720,6 @@ transition: opacity 0.3s ease;
 
   initMode();
 
-  // Fungsi tampilkan popup notifikasi
   function showPopup(message, success = true) {
     const icon = success
       ? `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>`
@@ -735,7 +733,6 @@ transition: opacity 0.3s ease;
     setTimeout(() => popup.classList.remove('show'), 3000);
   }
 
-  // Fungsi login pakai JSONP
   async function login() {
     const username = document.getElementById("username")?.value.trim();
     const password = document.getElementById("password")?.value.trim();
@@ -749,27 +746,9 @@ transition: opacity 0.3s ease;
     spinner.style.display = 'inline-block';
     loginBtn.disabled = true;
 
-    // Hapus script JSONP lama jika ada
-    const oldScript = document.getElementById('jsonp-login-script');
-    if (oldScript) oldScript.remove();
-
-    const callbackName = 'handleLogin_' + Date.now();
-
-    // Timeout 10 detik jika server tidak merespon
-    let timeoutId = setTimeout(() => {
-      showPopup("Timeout: Server tidak merespon", false);
-      btnText.style.display = 'inline';
-      spinner.style.display = 'none';
-      loginBtn.disabled = false;
-      delete window[callbackName];
-      document.getElementById('jsonp-login-script')?.remove();
-    }, 10000);
-
-    window[callbackName] = function(result) {
-      clearTimeout(timeoutId);
-      btnText.style.display = 'inline';
-      spinner.style.display = 'none';
-      loginBtn.disabled = false;
+    try {
+      const response = await fetch(`https://server-minangchicken-production.up.railway.app/api/login?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`);
+      const result = await response.json();
 
       if (result.success) {
         const user = {
@@ -778,48 +757,37 @@ transition: opacity 0.3s ease;
           level: result.level
         };
         localStorage.setItem("user", JSON.stringify(user));
-        localStorage.setItem("username", result.username);  // tambah ini
-        localStorage.setItem("nama", result.nama);          // dan ini
+        localStorage.setItem("username", result.username);
+        localStorage.setItem("nama", result.nama);
         localStorage.setItem("lastActivity", Date.now());
 
         showPopup(`Selamat Datang ${result.nama}`, true);
-
         setTimeout(() => {
           window.location.href = "menu.html";
         }, 1000);
-      }
-      else {
+      } else {
         showPopup(result.message || "Username atau Password Salah !!!", false);
       }
-
-      delete window[callbackName];
-      document.getElementById('jsonp-login-script')?.remove();
-    };
-
-    // Buat dan tambahkan script JSONP
-    const script = document.createElement('script');
-    script.id = 'jsonp-login-script';
-    script.src = `https://script.google.com/macros/s/AKfycbzq6o_ZETi5HfSMaVFgRBxM2eTfqRDu3DIGnUm-pRhCfaUuqaZXmVxFtfKI93CdG0e_/exec?action=index&username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}&callback=${callbackName}`;
-    document.body.appendChild(script);
+    } catch (error) {
+      console.error("Login error:", error);
+      showPopup("Gagal menghubungi server login", false);
+    } finally {
+      btnText.style.display = 'inline';
+      spinner.style.display = 'none';
+      loginBtn.disabled = false;
+    }
   }
 
   loginBtn.addEventListener('click', login);
-
-  // Login dengan Enter
   document.getElementById('username')?.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); login(); } });
   document.getElementById('password')?.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); login(); } });
 
-  // Cek session user sudah login atau belum (hanya di halaman selain login.html)
   const path = window.location.pathname;
   const isLoginPage = path.includes('index.html');
   if (!isLoginPage) {
     const user = JSON.parse(localStorage.getItem("user"));
-    if (!user) {
-      // Kalau belum login, redirect ke login.html
-      window.location.href = "/index.html";
-    }
+    if (!user) window.location.href = "/index.html";
   }
-
 });
 </script>
 </body>
