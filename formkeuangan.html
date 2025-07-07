@@ -980,7 +980,7 @@ body.dark .popup-message {
     const nama = localStorage.getItem("nama");
     if (!username || !nama) {
       popupShow("Anda belum login. Silakan login terlebih dahulu.");
-      window.location.href = "/index.html";
+      window.location.href = "/minangchicken/index.html";
       return;
     }
 
@@ -1129,7 +1129,7 @@ sendCommentBtn.addEventListener("click", async () => {
       komentar: komentar // boleh kosong
     };
 
-    const res = await fetch("https://distinct-flint-fig.glitch.me/api/keuangan", {
+    const res = await fetch("https://server-minangchicken-production.up.railway.app/api/keuangan", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
@@ -1158,7 +1158,7 @@ sendCommentBtn.addEventListener("click", async () => {
       toggleSpinner(menuBtn, true);
       setTimeout(() => {
         toggleSpinner(menuBtn, false);
-        window.location.href = "/menu.html";
+        window.location.href = "/minangchicken/menu.html";
       }, 1000);
     });
   }
@@ -1169,7 +1169,7 @@ sendCommentBtn.addEventListener("click", async () => {
       setTimeout(() => {
         localStorage.clear();
         toggleSpinner(logoutBtn, false);
-        window.location.href = "/index.html";
+        window.location.href = "/minangchicken/index.html";
       }, 1000);
     });
   }
