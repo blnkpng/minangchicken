@@ -1104,7 +1104,7 @@ document.getElementById("formEditFull").addEventListener("submit", async (e) => 
   sendBtn.textContent = "Menyimpan...";
 
   try {
-    const response = await fetch("https://distinct-flint-fig.glitch.me/api/update-metode-pembayaran", {
+    const response = await fetch("https://server-minangchicken-production.up.railway.app/api/update-metode-pembayaran", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -1185,7 +1185,7 @@ function normalizeDate(input) {
   // =========================
   async function fetchOutputStok() {
     try {
-      const response = await fetch("https://distinct-flint-fig.glitch.me/api/output-stok-harian?action=getOutputStok");
+      const response = await fetch("https://server-minangchicken-production.up.railway.app/api/output-stok-harian?action=getOutputStok");
       if (!response.ok) throw new Error("Gagal mengambil data dari server");
 
       const json = await response.json();
@@ -1264,7 +1264,7 @@ function normalizeDate(input) {
   });
 
   headerImg.addEventListener("click", () => {
-    window.location.href = "menu.html";
+    window.location.href = "/minangchicken/menu.html";
   });
 
   // =========================
