@@ -1093,7 +1093,7 @@ body.dark .popup-message {
         console.log("Kirim data:", payload);
 
         // Kirim data ke API backend dengan POST dan JSON
-        const res = await fetch("server-minangchicken-production.up.railway.app/api/biaya-oprasional", {
+        const res = await fetch("https://server-minangchicken-production.up.railway.app/api/biaya-oprasional", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload)
