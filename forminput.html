@@ -940,8 +940,8 @@ body.dark .stok-display {
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   // === KONSTANTA & ELEMEN DOM ===
-  const API_GET_URL = 'https://distinct-flint-fig.glitch.me/api/bahanstokinput?action=getBahanBakuInput';
-  const API_POST_URL = 'https://distinct-flint-fig.glitch.me/api/input-stok';
+  const API_GET_URL = 'https://server-minangchicken-production.up.railway.app/api/bahanstokinput?action=getBahanBakuInput';
+  const API_POST_URL = 'https://server-minangchicken-production.up.railway.app/api/input-stok';
 
   const DRAFT_KEY = 'formInputDraft';
   const IDLE_TIMEOUT = 15 * 60 * 1000; // 15 menit
@@ -980,7 +980,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const nama = localStorage.getItem("nama");
   if (!username || !nama) {
     showPopup("Anda belum login. Silakan login terlebih dahulu.", 'error', 4000);
-    setTimeout(() => window.location.href = "/index.html", 4000);
+    setTimeout(() => window.location.href = "/minangchicken/index.html", 4000);
     return;
   }
 
@@ -1002,7 +1002,7 @@ document.addEventListener('DOMContentLoaded', function () {
     idleTimer = setTimeout(() => {
       showPopup('Anda telah logout karena tidak aktif selama 15 menit.', 'error', 4000);
       localStorage.clear();
-      setTimeout(() => window.location.href = '/index.html', 4000);
+      setTimeout(() => window.location.href = '/minangchicken/index.html', 4000);
     }, IDLE_TIMEOUT);
   }
 
@@ -1274,7 +1274,7 @@ function updateNamaBahanOptions() {
       toggleSpinner(menuBtn, true);
       setTimeout(() => {
         toggleSpinner(menuBtn, false);
-        window.location.href = "/menu.html";
+        window.location.href = "/minangchicken/menu.html";
       }, 1000);
     });
   }
@@ -1285,7 +1285,7 @@ function updateNamaBahanOptions() {
       setTimeout(() => {
         localStorage.clear();
         toggleSpinner(logoutBtn, false);
-        window.location.href = "/index.html";
+        window.location.href = "/minangchicken/index.html";
       }, 1000);
     });
   }
