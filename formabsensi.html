@@ -1386,7 +1386,7 @@ async function kirimAbsensiKeGAS(data, file) {
     fotoBase64: base64Foto
   };
 
-  const res = await fetch("https://distinct-flint-fig.glitch.me/api/absensi", {
+  const res = await fetch("server-minangchicken-production.up.railway.app/api/absensi", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload)
@@ -1519,7 +1519,7 @@ function pasangEventMenuLogout() {
   const btnMenuUtama = document.getElementById('btnMenuUtama');
   if (btnMenuUtama) {
     btnMenuUtama.addEventListener('click', () => {
-      window.location.href = "/menu.html";
+      window.location.href = "/minangchicken/menu.html";
     });
   }
 
@@ -1529,7 +1529,7 @@ function pasangEventMenuLogout() {
       localStorage.removeItem('username');
       localStorage.removeItem('nama');
       // Jangan hapus status cekIn dan cekOut
-      window.location.href = "/index.html";
+      window.location.href = "/minangchicken/index.html";
     });
   }
 }
