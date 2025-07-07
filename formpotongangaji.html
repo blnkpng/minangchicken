@@ -954,7 +954,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   function logoutAndRedirect() {
     alert('Sesi Anda telah habis. Silakan login kembali.');
     localStorage.clear();
-    window.location.href = '/index.html';  // ganti dengan halaman login kamu
+    window.location.href = '/minangchicken/index.html';  // ganti dengan halaman login kamu
   }
 
   // Cek login dan session expired
@@ -1100,7 +1100,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     submitBtn.textContent = "Mengirim...";
 
     try {
-      const res = await fetch("https://distinct-flint-fig.glitch.me/api/potongan", {
+      const res = await fetch("https://server-minangchicken-production.up.railway.app/api/potongan", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
@@ -1118,12 +1118,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
   menuBtn.addEventListener('click', () => {
-    window.location.href = '/menu.html';
+    window.location.href = '/minangchicken/menu.html';
   });
 
   logoutBtn.addEventListener('click', () => {
     localStorage.clear();
-    window.location.href = '/index.html';
+    window.location.href = '/minangchicken/index.html';
   });
 
   // Fungsi notifikasi ala iOS (simple)
